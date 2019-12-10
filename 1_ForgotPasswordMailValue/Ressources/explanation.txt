@@ -1,0 +1,6 @@
+[ Walkthrough ]
+
+Go to : http://192.168.99.100/?page=recover (forgot password page)
+In the main div, find the hidden input ("hidden" class) and change its hardcode value to another mail address. Submit the form then the flag will appear.
+
+Flag : 1D4855F7337C0C14B6F44946872C4EB33853F40B2D54393FBE94F49F1E19BBB0

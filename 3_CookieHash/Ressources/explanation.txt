@@ -1,0 +1,11 @@
+[ Walkthrough ]
+
+Open inspector and go to "Application" pannel, then decode the md5 "I_am_admin" cookie value :
+- Decoded original value : 68934a3e9455fa72420237eb05902327 -> false
+
+Now md5 hash "true" :
+- Hashed value of "true" : b326b5062b2f0e69046810717534cb09
+
+Enter the new value and refresh the page, a javascript alert will pop with the flag.
+
+Flag : df2eb4ba34ed059a1e3e89ff4dfc13445f104a1a52295214def1c4fb1693a5c3
