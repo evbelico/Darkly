@@ -1,0 +1,10 @@
+[ Walkthrough ]
+
+Go to page : http://192.168.99.100/index.php?page=feedback
+
+Look for the <form> tags and change the value of the js validate_form function from "this" to ""/NULL, then the flag should appear.
+The form naturally won't let you submit empty fields, but with this method the input check gets bypassed.
+
+You can also trigger the flag only by inputting <> tags in the name section then submiting the form.
+
+FLAG : 0FBB54BBF7D099713CA4BE297E1BC7DA0173D8B3C21C1811B916A3A86652724E
