@@ -1,0 +1,13 @@
+[ Walkthrough ]
+
+Go to : http://192.168.99.100/?page=media&src=nsa
+
+On the page we can see the image is wrapped up in <object> markup instead of <img>. The <object> markup takes one arg "data", but no other specification. 
+The basic <object> markup represents an external resource (here, the nsa jpeg picture). It can interpret anything, especially if no -type- is specified. We'll turn it into an XSS attack, such as : <script>alert('This is an XSS attack');</script>
+Now let's encode this string to base64 (which is a usual type for images displayed on the web) : PHNjcmlwdD5hbGVydCgnVGhpcyBpcyBhbiBYU1MgYXR0YWNrJyk7PC9zY3JpcHQ+
+
+Now since the <object> markup will interpret anything specified in the "&src=something" bit of the url, let's specify what we're sending, which gives us this : http://192.168.99.100/?page=media&src=data:text/html;base64,PHNjcmlwdD5hbGVydCgnVGhpcyBpcyBhbiBYU1MgYXR0YWNrJyk7PC9zY3JpcHQ+
+
+Copy paste it inside the URL bar and the flag should appear.
+
+How to prevent : in this case, actually host the file on the server and serve it with <img> markup. Otherwise, specify the type of data the <object> markup should take ('image/jpeg' for example). This could lead to serious problems, such as cookie theft (which contain important data like passwords and emails on some websites), since it's possible to execute any type of code here.
