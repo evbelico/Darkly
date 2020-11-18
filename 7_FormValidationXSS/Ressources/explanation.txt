@@ -1,0 +1,7 @@
+[ Walkthrough ]
+
+Go to page : http://192.168.99.100/index.php?page=feedback
+
+Simply type 'script' in the name and comment section, and the flag should appear.
+This is a basic XSS (Cross Site Scripting) attack, which is basically injecting/running malicious code on the website (done using javascript here).
+How to prevent it : sanitize all inputs on the website. In PHP it can be code with a homemade function or just the htmlspecialchars() functions, which detects '<>' characters.
