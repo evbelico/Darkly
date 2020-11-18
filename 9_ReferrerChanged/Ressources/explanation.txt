@@ -1,0 +1,9 @@
+[ Walkthrough ]
+
+With the page inspector open, we can read informations about Epitech, then a line says we must come from the nsa website to go to the next step.
+Another line says to use the browser with "ft_bornToSec" credentials.
+
+On the Network pannel (here in Firefox), let's take the GET request ("/page=xxx") and change the referrer to "https://www.nsa.gov/". Basically the Referrer indicates from where you entered the website (here, the nsa website).
+Change the User-Agent to : ft_bornToSec.
+
+Usually the User-Agent helps the server identify the operating system, application, vendor and/or version of the requesting user agent (here it's supposed to be Mozilla Firefox).
