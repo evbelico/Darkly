@@ -1,8 +1,0 @@
-[ Walkthrough ]
-
-Upon changing the I_am_admin cookie from "false" to "true", try to access the /admin page, then brute force the password by hand (common passwords) or use Hydra also.
-
-Login : root
-Password : dragon
-
-FLAG : d19b4823e0d5600ceed56d5e896ef328d7a2b9e7ac7e80f4fcdb9b10bcb3e7ff

