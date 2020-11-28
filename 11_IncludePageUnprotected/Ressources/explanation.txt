@@ -1,9 +1,9 @@
 [ Walkthrough ]
 
-Go to any page, such as : 192.168.99.100/?page=upload
-From there, try to access random page, such as : 192.168.100/?page=random (an alert saying "Wtf ?" should appear).
+Go to any page, such as : http://[IP]/?page=upload
+From there, try to access a random page, such as : 192.168.100/?page=random (an alert saying "Wtf ?" should appear).
 We know that the website is written in PHP, so probably using the include function. Specifically we can deduce that the include function will try to load the page asked in the url (such as "include('random.php'), and fail if it cannot find it (which is the default behaviour of the function).
-On php.net, on the include function page (https://www.php.net/manual/en/function.include.php), we can read as follow :
+On php.net, on the include function page (https://www.php.net/manual/en/function.include.php), we can read as follows :
 "If a path is defined — whether absolute (starting with a drive letter or \ on Windows, or / on Unix/Linux systems) or relative to the current directory (starting with . or ..) — the include_path will be ignored altogether. For example, if a filename begins with ../, the parser will look in the parent directory to find the requested file."
 
 Here it's time to remember that the website is hosted on a Unix/Linux system, so all we have to do is dig inside the folder structure to bypass the include function, and find sensitive information. Here we're probably looking for a '/etc/passwd' file. I'll explain later why.
@@ -13,6 +13,7 @@ We finally get the flag after climbing up to : http://192.168.99.100/?page=../..
 
 How to prevent : a basic "Deny from all" in the .htaccess file of the server (here from probably a LAMP server since the server is linux based) can prevent an include exploit, and redirect the user if he tries to access any restricted file.
 We could also have a function that checks if the page asked in the URL exists in the htdocs folder / the folder which contains the actual website pages and return a 404 error if it can't find it.
-Historically, the /etc/passwd used to contain hashed or stored in clear passwords on UNIX based systems. Accessing this file could compromise security of the server and website.
 
+Why the /etc/passwd: Historically, the /etc/passwd used to contain hashed or stored in clear passwords on UNIX based systems. Accessing this file could compromise security of the server and website.
 
+See : https://openweb.eu.org/articles/le-fichier-htaccess

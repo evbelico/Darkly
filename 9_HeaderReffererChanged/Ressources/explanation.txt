@@ -1,9 +1,19 @@
 [ Walkthrough ]
 
+Go to (BornToSec section) : http://[IP]/?page=e43ad1fdc54babe674da7c7b8f0127bde61de3fbe01def7d00f151c2fcca6d1c
+
 With the page inspector open, we can read informations about Epitech, then a line says we must come from the nsa website to go to the next step.
 Another line says to use the browser with "ft_bornToSec" credentials.
 
-On the Network pannel (here in Firefox), let's take the GET request ("/page=xxx") and change the referrer to "https://www.nsa.gov/". Basically the Referrer indicates from where you entered the website (here, the nsa website).
+On the Network pannel (here in Firefox), let's take the GET request ("/page=xxx") and change the referer to "https://www.nsa.gov/". Basically the Referrer indicates from where you entered the website (here, the nsa website).
 Change the User-Agent to : ft_bornToSec.
 
 Usually the User-Agent helps the server identify the operating system, application, vendor and/or version of the requesting user agent (here it's supposed to be Mozilla Firefox).
+
+What is a user-agent : it helps the server identify which web browser you use, to serve the compatible version of the website (web browser compatibility, such as Firefox/Google Chrome/Edge or Internet Explorer, and mobile versions). It also helps identify your OS, which is why on some software downloading sites the website directly serves you the compatible software (for example you're running on MacOS, you want to download software, and the website directly serves you the MacOS version and not the Linux one). The user-agent can also be used to establish statistics on which web browsers and OSs the users are using.
+Historically, you might want to spoof the user-agent to access websites not compatible with your web browser, or get software not compatible with your operating system. You could also do it to check if the chrome's version is different from the firefox version (content wise), for example. Here, the 'user-agent' part is just a joke on spies (agent ft_bornToSec can access the flag, not regular users).
+
+What is a referer : it is optional, but used to indicate the URL of the page from which the current request originated (for example a form submit, navigation, etc). This can be used to secure requests, for example : the user should be able to create (submit) an account if the referer indicates that they came from the user creation page ; if not, the creation should not go through. But since the user (client) controls the request, such as the HTTP headers, it's easy to spoof it. Here, in order to get the flag, the site must detect that we come from the NSA's website. All we had to do was spoof the referer in the headers.
+
+See : https://en.wikipedia.org/wiki/Referer_spoofing
+https://en.wikipedia.org/wiki/User_agent

@@ -1,6 +1,6 @@
 [ Walkthrough ]
 
-Go to : http://192.168.99.100/?page=recover (forgot password page)
+Go to : http://[IP]/?page=recover (forgot password page)
 In the main div, find the hidden input ("hidden" class) and change its hardcoded value to another mail address. Submit the form then the flag will appear.
 
-How to prevent : a quick database check to see if email address actually exists ! People could get spammed randomly, plus that would be bad for the website's credibility. 
+How to prevent : a quick database check to see if the email address actually exists ! People could get spammed randomly, plus that would be bad for the website's credibility. 

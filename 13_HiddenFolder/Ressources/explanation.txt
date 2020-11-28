@@ -6,17 +6,14 @@ User-agent: *
 Disallow: /whatever
 Disallow: /.hidden
 
-We know there are two folders here. Let's look at /.hidden/ : http://192.168.99.100/.hidden/
+We know there are two folders here. Let's look at /.hidden/ : http://[IP]/.hidden/
 At the bottom of every folder we can find a README text file. It's nearly impossible to navigate through the folder structure without getting lost. We can find more READMEs who say various things, for example :
 Non ce n'est toujours pas bon ...
 Demande à ton voisin du dessous
 
-We'll have to crawl/scrape every folder/subfolders looking for different messages in the README text files. It can be done using the tool wget (installed via homebrew here), like so : wget -r -np -e robots=off -R "index.html*" 192.168.99.100/.hidden/ (-r for recursive, -np so it doesn't follow links to parent directory, -e robots=off to ignore robots.txt file, -R as --reject to reject all pages such as index.html&page=something).
+We'll have to crawl/scrape every folder/subfolders looking for different messages in the README text files. It can be done using the tool wget (which allows to retrieve content from a webserver, installed via homebrew here), like so : wget -r -np -e robots=off -R "index.html*" http://[IP]/.hidden/ (-r for recursive, -np so it doesn't follow links to parent directory, -e robots=off to ignore robots.txt file, -R as --reject to reject all pages such as index.html&page=something).
 The command takes a while, but we can then access a copy of the .hidden/ folder inside the folder with the website IP address : [IP]/.hidden/
 We then create an exclusion list so we don't have to loop through all the common README messages, like :
-Demande à ton voisin de droite
-Demande à ton voisin de gauche
-Demande à ton voisin du dessous
 Demande à ton voisin de gauche
 Demande à ton voisin de droite
 Demande à ton voisin du dessous

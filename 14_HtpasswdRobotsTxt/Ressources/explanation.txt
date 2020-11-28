@@ -3,7 +3,7 @@
 With the robots.txt file we found another folder called /whatever/ which contains an htpasswd file with couple login:password : root:8621ffdbc5698829397d97767ac13db3
 md5 decrypted password : dragon
 
-While looking for vulnerabilities, I found a route called : [IP]/admin which is the admin login page.
+While looking for vulnerabilities, I found a route called : http://[IP]/admin which is the admin login page (database access ?).
 Enter root as login and dragon as password and the flag (+ a wonderful gif and animation) should appear.
 
 How to prevent : again, do not store sensitive or admin credentials anywhere, especially in unprotected areas. A simple .htaccess file at the root of the folder would have prevented it.

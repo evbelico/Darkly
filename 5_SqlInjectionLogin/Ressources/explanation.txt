@@ -1,18 +1,19 @@
 [ Walkthrough ]
 
-Still on the member page, we can look at the database information_schema and see that there is a db_default database. If we try something like : '1=1 union select username, password from db_default' it returns us 'Table 'Member_Sql_Injection.db_default' doesn't exist'
+Still on the member page, we can look at the database information_schema and see that there is a db_default database. If we try something like : '1=1 union select username, password from db_default;' it returns us 'Table 'Member_Sql_Injection.db_default' doesn't exist'
 
 With the same statement as before : '1=1 union select table_name, column_name from information_schema.columns" we can see fields id, username, password from db_default. We need to access these columns in order to get admin access codes.
 
 We can look up database schemas like so : '1=1 union select table_name, table_schema from information_schema.columns'
-We see that there are many schemas. We can see a Member_Brute_Force schema. Let's try to access it : '1=1 union select username, password from Member_Brute_Force.db_default' (we want to access username + password values from the Member_Brute_Force schema held in the database db_default).
+We see that there are many schemas. We can see a Member_Brute_Force schema. Let's try to access it : '1=1 union select username, password from Member_Brute_Force.db_default' (we want to access username + password values held in the db_default table from the Member_Brute_Force schema).
 
 Bingo, we get the same password two times (for users root and admin) : 3bf1114a986ba87ed28fc1b5884fc2f8
 md5 decrypted password : shadow
 
-We can log in as admin with the combination admin (or root) with password shadow at : http://192.168.99.100/?page=signin
+We can log in as admin with the combination admin (or root) with password shadow at : http://[IP]/?page=signin
 
 The flag should appear.
 
-How to prevent : same as before, never trust the user input. Knowing the database structure is dangerous. Always prepare SQL requests, in PHP in can be done using PDO->prepare. Set up a two factor authentication system (password + verification code sent via email or sms, for example).
+How to prevent : same as before, never trust the user input. Knowing the database structure is dangerous. Always prepare SQL requests, in PHP in can be done using PDO->prepare. Set up a two factor authentication system for login (password + verification code sent via email or sms, for example).
 See : https://www.php.net/manual/fr/pdo.prepare.php
+https://en.wikipedia.org/wiki/Multi-factor_authentication

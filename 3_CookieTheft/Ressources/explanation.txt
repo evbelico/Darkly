@@ -1,12 +1,12 @@
 [ Walkthrough ]
 
 Open inspector and go to "Application" pannel, then decode the md5 "I_am_admin" cookie value :
-- Decoded original value : 68934a3e9455fa72420237eb05902327 -> false
+- Decoded original value : 68934a3e9455fa72420237eb05902327 -> "false"
 
 Now md5 encrypt "true" :
 - Hashed value of "true" : b326b5062b2f0e69046810717534cb09
 
-Enter the new value and refresh the page, a javascript alert will pop with the flag.
+Enter the new value and refresh the page, a javascript alert will pop up with the flag.
 
 How to prevent : never store important data inside cookies (passwords, credit card numbers...). Use better encryption. Set a cookie expiration date (for example when the users logs out). In PHP you can completely avoid using cookies (handled by the client) while using sessions (handled by the server), to store data. If you use PHP's session only a session cookie will be generated.
 See : https://www.php.net/manual/en/session.examples.basic.php
