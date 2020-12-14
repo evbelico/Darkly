@@ -1,7 +1,7 @@
 # Darkly
 42 introductory project to web security.
 
-**Can you find all the flaws from the website ?**
+Can you find all the flaws from the website ?
 _______________
 <br />
 
