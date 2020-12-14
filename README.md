@@ -5,7 +5,7 @@
 _______________
 <br />
 
-**Spoilers** :
+**Notions** :
 - SQL injections
 - (XSS) Cross-site scripting
 - Cookie security
