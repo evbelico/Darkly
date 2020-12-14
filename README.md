@@ -14,4 +14,4 @@ _______________
 ... and many more.
 <br />
 
-*For more information, visit the OWASP's foundation website : https://owasp.org/www-project-top-ten/*
+*For more informations, visit the OWASP's foundation website : https://owasp.org/www-project-top-ten/*
